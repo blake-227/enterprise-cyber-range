@@ -1,0 +1,18 @@
+﻿# Virtual machine files
+*.vmdk
+*.vdi
+*.vhd
+*.vhdx
+*.ova
+*.ovf
+# ISO files
+*.iso
+# Logs
+*.log
+# Secrets and credentials
+*.env
+*.key
+*.pem
+# OS files
+Thumbs.db
+.DS_Store
