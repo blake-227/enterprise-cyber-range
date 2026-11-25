@@ -70,7 +70,7 @@ Security Automation
 
 
 
-Status: In Progress
+Status: Complete
 
 
 
@@ -112,4 +112,5 @@ Each project expands the same enterprise environment instead of creating unrelat
 
 The goal is to progressively build a complete enterprise cyber range capable of supporting realistic security engineering, monitoring, attack simulation, and incident response exercises.
 
+light 35
 

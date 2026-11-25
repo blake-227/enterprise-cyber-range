@@ -166,5 +166,63 @@ Project 1 foundation infrastructure is operational.
 
 
 
-The next stages will introduce packet analysis, additional monitoring, centralized logging, Active Directory, cloud infrastructure, attack simulation, and detection engineering.
+\## Network Traffic Investigation
+
+
+
+Wireshark was used to capture and analyze network traffic within the isolated cyber range.
+
+
+
+\### Findings
+
+
+
+\- Successfully observed ARP requests and responses between Kali Purple and Windows 11.
+
+\- Verified network connectivity through ICMP echo requests and replies.
+
+\- Identified the TCP three-way handshake between Kali Purple and Ubuntu Server.
+
+\- Observed SSH key exchange and encrypted application traffic over TCP port 22.
+
+\- Established an initial network traffic baseline for future security monitoring and detection exercises.
+
+
+
+\### Evidence
+
+
+
+\- \[ARP Investigation](screenshots/01-arp-investigation.png)
+
+\- \[ICMP Investigation](screenshots/02-icmp-investigation.png)
+
+\- \[SSH Investigation](screenshots/03-ssh-investigation.png)
+
+\- \[ARP and ICMP Packet Capture](evidence/01-arp-icmp-investigation.pcapng)
+
+\- \[SSH Packet Capture](evidence/02-ssh-investigation.pcapng)
+
+
+
+\## Current Status
+
+
+
+Status: Complete
+
+
+
+The core cyber range infrastructure has been successfully deployed, configured, documented, and tested. All three virtual machines are operational on the isolated VMnet2 network.
+
+
+
+The environment is ready for future network security, monitoring, detection engineering, and enterprise security projects.
+
+
+
+
+
+
 

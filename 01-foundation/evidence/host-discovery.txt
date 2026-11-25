@@ -1,0 +1,13 @@
+# Nmap 7.991 scan initiated Wed Oct 14 16:02:17 2026 as: /usr/lib/nmap/nmap -sn -n -oN /home/blake/cyber-range-evidence/project-01/host-discovery.txt 10.10.10.0/24
+Nmap scan report for 10.10.10.1
+Host is up (0.0019s latency).
+MAC Address: 00:50:56:C0:00:02 (VMware)
+Nmap scan report for 10.10.10.20
+Host is up (0.00021s latency).
+MAC Address: 00:0C:29:B2:FE:00 (VMware)
+Nmap scan report for 10.10.10.30
+Host is up (0.00046s latency).
+MAC Address: 00:0C:29:50:46:F2 (VMware)
+Nmap scan report for 10.10.10.10
+Host is up.
+# Nmap done at Wed Oct 14 16:02:19 2026 -- 256 IP addresses (4 hosts up) scanned in 1.95 seconds
