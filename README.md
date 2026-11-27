@@ -1,416 +1,169 @@
-﻿<div align="center">
+# Enterprise Cyber Range
 
+**Enterprise security engineering · Blue team · Red team · Purple team**
 
+![Status](https://img.shields.io/badge/Status-Active%20Development-238636?style=for-the-badge) ![Projects](https://img.shields.io/badge/Projects-01%20%2F%20100-2563eb?style=for-the-badge) ![Phase](https://img.shields.io/badge/Phase-Foundation-7c3aed?style=for-the-badge)
 
-\# Enterprise Cyber Range
+A hands-on enterprise cybersecurity environment built progressively to practice infrastructure engineering, security operations, identity security, cloud defense, adversary emulation, and automated security validation.
 
+[Architecture](#architecture) · [Roadmap](#development-roadmap) · [Projects](#project-directory) · [Technology](#technology-stack)
 
+---
 
-\### Enterprise Security Engineering | Red Team | Blue Team | Purple Team
+## 01 / Overview
 
+Each project expands the same enterprise environment rather than creating an unrelated lab. The goal is to build, secure, monitor, assess, investigate, and improve the infrastructure through increasingly complex exercises.
 
-
-An evolving enterprise cybersecurity environment designed to simulate real-world infrastructure, security operations, adversary emulation, cloud security, and automated defense.
-
-
-
-!\[Status](https://img.shields.io/badge/Status-Active%20Development-success?style=for-the-badge)
-
-!\[Projects](https://img.shields.io/badge/Projects-1%20%2F%20100-blue?style=for-the-badge)
-
-!\[Phase](https://img.shields.io/badge/Phase-Foundation-purple?style=for-the-badge)
-
-
-
-\---
-
-
-
-!\[Kali](https://img.shields.io/badge/Kali%20Purple-557C94?style=flat-square\&logo=kalilinux\&logoColor=white)
-
-!\[VMware](https://img.shields.io/badge/VMware-607078?style=flat-square\&logo=vmware\&logoColor=white)
-
-!\[Windows](https://img.shields.io/badge/Windows-0078D6?style=flat-square)
-
-!\[Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square\&logo=ubuntu\&logoColor=white)
-
-!\[Azure](https://img.shields.io/badge/Azure-0078D4?style=flat-square)
-
-!\[Python](https://img.shields.io/badge/Python-3776AB?style=flat-square\&logo=python\&logoColor=white)
-
-
-
-\[Overview](#overview) •
-
-\[Architecture](#architecture) •
-
-\[Roadmap](#development-roadmap) •
-
-\[Projects](#project-directory) •
-
-\[Technology](#technology-stack)
-
-
-
-</div>
-
-
-
-\---
-
-
-
-\## Overview
-
-
-
-The Enterprise Cyber Range is a hands-on cybersecurity engineering environment built to replicate the infrastructure and security operations of a modern organization.
-
-
-
-Rather than completing disconnected security labs, each project contributes to a larger enterprise environment.
-
-
-
-The objective is to build, secure, monitor, assess, investigate, and continuously improve the same infrastructure through increasingly complex security exercises.
-
-
-
-\### Core Objectives
-
-
-
-| Domain | Objective |
-
+| Security domain | Engineering objectives |
 | :--- | :--- |
+| **Security infrastructure** | Virtualization, network segmentation, system hardening |
+| **Blue team** | Security monitoring, threat hunting, incident response |
+| **Red team** | Authorized security assessments and adversary emulation |
+| **Purple team** | Detection validation and security control improvement |
+| **Cloud security** | Azure infrastructure security, cloud logging and detection |
+| **Identity security** | Identity lifecycle, access governance, privileged access |
+| **Detection engineering** | Develop, test and automate security detections |
+| **AppSec / DevSecOps** | Application, container, infrastructure and CI/CD security |
 
-| Blue Team | Security monitoring, threat hunting, and incident response |
+> This cyber range is an independent project. Its future identity environment will be built from scratch, separate from Northstar.
 
-| Red Team | Authorized penetration testing and adversary emulation |
+---
 
-| Purple Team | Detection validation and security control improvement |
+## Architecture
 
-| Cloud Security | Secure Azure infrastructure and cloud threat detection |
-
-| Identity Security | Identity lifecycle, access governance, and privileged access |
-
-| Detection Engineering | Develop, test, and automate security detections |
-
-| DevSecOps | Integrate security into infrastructure and software deployment |
-
-| Security Infrastructure | Enterprise networking, segmentation, and system hardening |
-
-
-
-\---
-
-
-
-\## Architecture
-
-
-
-\### Current Environment
-
-
+### Current environment — deployed
 
 ```mermaid
-
 flowchart TD
-
-&#x20;   HOST\["Windows Host | VMware Workstation"]
-
-&#x20;   NET\["VMnet2 | 10.10.10.0/24"]
-
-
-
-&#x20;   HOST --> NET
-
-
-
-&#x20;   NET --> KP\["KP-SOC01<br/>Kali Purple<br/>10.10.10.10"]
-
-&#x20;   NET --> WIN\["WIN11-USER01<br/>Windows 11<br/>10.10.10.20"]
-
-&#x20;   NET --> UB\["UBUNTU-SRV01<br/>Ubuntu Server<br/>10.10.10.30"]
-
-
-
-&#x20;   style KP fill:#6741a5,color:#fff
-
-&#x20;   style WIN fill:#0078d4,color:#fff
-
-&#x20;   style UB fill:#c74618,color:#fff
-
+    H["Windows host<br/>VMware Workstation"]
+    N["VMnet2 · Host-only<br/>10.10.10.0/24"]
+    K["KP-SOC01<br/>Kali Purple · .10"]
+    W["WIN11-USER01<br/>Windows 11 · .20"]
+    U["UBUNTU-SRV01<br/>Ubuntu Server · .30"]
+    H --- N
+    N --- K
+    N --- W
+    N --- U
+    classDef purple fill:#6741a5,stroke:#a78bfa,color:#fff
+    classDef blue fill:#1d4ed8,stroke:#60a5fa,color:#fff
+    classDef orange fill:#9a3412,stroke:#fb923c,color:#fff
+    class K purple
+    class W blue
+    class U orange
 ```
 
+Three virtual machines operate on a host-only network with static IP addresses and no configured default gateway during lab testing. The Windows host adapter is `10.10.10.1`.
 
+[View detailed foundation topology](architecture/FOUNDATION-TOPOLOGY.md) · [View asset inventory](01-foundation/documentation/ASSET-INVENTORY.md)
 
-The current environment operates within a VMware host-only network using static IP addressing and no Internet gateway.
+### Target architecture — planned end state
 
-
-
-\[View detailed network architecture](architecture/FOUNDATION-TOPOLOGY.md)
-
-
-
-\### Target Enterprise Architecture
-
-
+The following is a **logical architecture**, showing the major security domains and how they will work together. It is not a claim that these systems are already deployed.
 
 ```mermaid
-
 flowchart TD
-
-&#x20;   CORE\["Enterprise Cyber Range"]
-
-
-
-&#x20;   CORE --> INFRA\["Enterprise Infrastructure"]
-
-&#x20;   CORE --> CLOUD\["Cloud and Identity"]
-
-&#x20;   CORE --> SOC\["Security Operations"]
-
-
-
-&#x20;   INFRA --> FW\["pfSense"]
-
-&#x20;   INFRA --> AD\["Active Directory"]
-
-&#x20;   INFRA --> END\["Windows / Linux"]
-
-
-
-&#x20;   CLOUD --> AZ\["Microsoft Azure"]
-
-&#x20;   CLOUD --> IAM\["Entra ID / IAM"]
-
-&#x20;   CLOUD --> AKS\["Kubernetes / AKS"]
-
-
-
-&#x20;   SOC --> KP\["Kali Purple"]
-
-&#x20;   SOC --> SIEM\["SIEM / EDR"]
-
-&#x20;   SOC --> NSM\["Network Monitoring"]
-
-
-
-&#x20;   CORE --> RED\["Red Team"]
-
-&#x20;   CORE --> BLUE\["Blue Team"]
-
-&#x20;   CORE --> PURPLE\["Purple Team"]
-
-
-
-&#x20;   RED --> VALIDATE\["Security Validation"]
-
-&#x20;   BLUE --> VALIDATE
-
-&#x20;   PURPLE --> VALIDATE
-
-
-
-&#x20;   VALIDATE --> AUTO\["Automation and Detection Engineering"]
-
-
-
-&#x20;   style RED fill:#991b1b,color:#fff
-
-&#x20;   style BLUE fill:#1d4ed8,color:#fff
-
-&#x20;   style PURPLE fill:#7e22ce,color:#fff
-
-&#x20;   style CLOUD fill:#0369a1,color:#fff
-
+    EDGE["Controlled WAN / pfSense"]
+    ENT["Enterprise network<br/>DMZ · users · servers · AD"]
+    CLOUD["Cloud and identity<br/>Azure · Entra ID · AKS"]
+    RED["Authorized test environment<br/>Kali Linux · ATT&CK exercises"]
+    SOC["Security operations<br/>Kali Purple · SIEM · EDR · NSM"]
+    PURPLE["Purple team validation<br/>Detect · investigate · improve · retest"]
+    AUTO["Security engineering<br/>Git · Terraform · CI/CD · automation"]
+    EDGE --- ENT
+    EDGE --- CLOUD
+    RED -->|Controlled tests| ENT
+    RED -->|Controlled tests| CLOUD
+    ENT -->|Telemetry| SOC
+    CLOUD -->|Telemetry| SOC
+    SOC --> PURPLE
+    PURPLE --> AUTO
+    AUTO -.->|Validated controls| ENT
+    AUTO -.->|Validated controls| CLOUD
+    classDef red fill:#991b1b,stroke:#f87171,color:#fff
+    classDef purple fill:#6741a5,stroke:#a78bfa,color:#fff
+    classDef blue fill:#1e40af,stroke:#60a5fa,color:#fff
+    classDef teal fill:#115e59,stroke:#5eead4,color:#fff
+    class RED red
+    class SOC,PURPLE purple
+    class CLOUD blue
+    class AUTO teal
 ```
 
+---
 
+## Development Roadmap
 
-The target architecture represents the planned end state of the cyber range.
+**Overall progress:** 1 of 100 planned projects complete.
 
+![Completion](https://img.shields.io/badge/Overall%20completion-1%25-6741a5?style=flat-square)
 
+| Phase | Focus | Projects | Status |
+| :---: | :--- | :---: | :--- |
+| 01 | Core infrastructure and networking | 1–10 | **In progress** |
+| 02 | On-premises enterprise security | 11–30 | Planned |
+| 03 | Cloud and identity security | 31–50 | Planned |
+| 04 | Advanced blue, red and purple team operations | 51–75 | Planned |
+| 05 | Enterprise security engineering and automation | 76–100 | Planned |
 
-\---
+Difficulty increases from easy to medium, advanced, and hard as the environment develops.
 
+---
 
-
-\## Development Roadmap
-
-
-
-| Phase | Focus | Planned Projects | Status |
-
-| :--- | :--- | :---: | :--- |
-
-| 01 | Core Infrastructure and Networking | 1–10 | In Progress |
-
-| 02 | On-Premises Enterprise Security | 11–30 | Planned |
-
-| 03 | Cloud and Identity Security | 31–50 | Planned |
-
-| 04 | Advanced Blue, Red and Purple Team Operations | 51–75 | Planned |
-
-| 05 | Enterprise Security Engineering and Automation | 76–100 | Planned |
-
-
-
-\### Overall Progress
-
-
-
-!\[Progress](https://progress-bar.xyz/1/?title=Completion\&width=500\&color=6741a5)
-
-
-
-\*\*1 of 100 planned projects completed.\*\*
-
-
-
-\---
-
-
-
-\## Project Directory
-
-
+## Project Directory
 
 | ID | Project | Category | Difficulty | Status |
-
 | :---: | :--- | :--- | :--- | :--- |
+| 01 | [Core Cyber Range Foundation](01-foundation/) | Security infrastructure | Easy–Medium | **Complete** |
+| 02 | Enterprise Network Security and Segmentation | Network security | Easy–Medium | Upcoming |
 
-| 01 | \[Core Cyber Range Foundation](01-foundation/) | Security Infrastructure | Easy / Medium | Complete |
+### Featured project — Core Cyber Range Foundation
 
-| 02 | Enterprise Network Security and Segmentation | Network Security | Easy / Medium | Upcoming |
+Deployed three virtual machines, established a static network baseline, configured recovery snapshots, and investigated ARP, ICMP and SSH traffic with Wireshark.
 
+[Read the technical report](01-foundation/README.md) · [Browse supporting evidence](01-foundation/evidence/)
 
+---
 
-Additional projects will be added as the environment develops.
+## Technology Stack
 
+### Currently deployed and used
 
-
-\---
-
-
-
-\## Technology Stack
-
-
-
-\### Currently Deployed
-
-
+![VMware](https://img.shields.io/badge/VMware-607078?style=flat-square) ![Kali Purple](https://img.shields.io/badge/Kali%20Purple-6741a5?style=flat-square&logo=kalilinux&logoColor=white) ![Windows](https://img.shields.io/badge/Windows%2011-0078D4?style=flat-square) ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white) ![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 
 | Technology | Purpose |
-
 | :--- | :--- |
-
-| VMware Workstation Pro | Virtual infrastructure |
-
+| VMware Workstation Pro | Virtual infrastructure and recovery snapshots |
 | Kali Purple | Security analysis workstation |
-
-| Windows 11 Pro | Enterprise employee endpoint |
-
-| Ubuntu Server | Enterprise Linux server |
-
+| Windows 11 Pro | Simulated enterprise employee endpoint |
+| Ubuntu Server | Internal Linux server and SSH administration |
 | Nmap | Asset discovery and service enumeration |
-
-| Wireshark | Network traffic and protocol analysis |
-
+| Wireshark | Network traffic capture and analysis |
 | Git / GitHub | Version control and technical documentation |
 
-
-
-\### Planned Integrations
-
-
+### Planned integrations
 
 | Domain | Technologies |
-
 | :--- | :--- |
-
 | Networking | pfSense, Zeek, Suricata |
-
-| Security Operations | Wazuh, Elastic, Sysmon |
-
-| Identity | Active Directory, Entra ID, Microsoft Graph |
-
+| Security operations | Wazuh, Elastic, Sysmon |
+| Identity | Active Directory, Microsoft Entra ID, Microsoft Graph |
 | Cloud | Azure, Defender for Cloud, Azure Monitor |
-
-| Offensive Security | Kali Linux, Burp Suite, BloodHound |
-
-| Purple Team | Atomic Red Team, CALDERA, VECTR |
-
-| Detection | Sigma, YARA, KQL, MITRE ATT\&CK |
-
+| Offensive security | Kali Linux, Burp Suite, BloodHound |
+| Purple team | Atomic Red Team, CALDERA, VECTR |
+| Detection | Sigma, YARA, KQL, MITRE ATT&CK |
 | Automation | Python, PowerShell, Bash, Terraform |
-
 | DevSecOps | GitHub Actions, Docker, Kubernetes |
 
+---
 
+## Project Documentation Standard
 
-\---
+Every project documents its scope, architecture, implementation, technical validation, findings, lessons learned and supporting evidence. Completed work is distinguished from future plans.
 
+## Responsible Security Testing
 
+All testing is restricted to personally owned or explicitly authorized laboratory systems. The repository is intended for cybersecurity education, defensive research and professional development. Public evidence must exclude secrets, personal information and unrelated traffic.
 
-\## Project Documentation Standard
+---
 
-
-
-Every completed project will include:
-
-
-
-\- Project objectives and scope
-
-\- Architecture and implementation details
-
-\- Configuration procedures
-
-\- Technical validation
-
-\- Screenshots and supporting evidence
-
-\- Findings and lessons learned
-
-\- Security considerations
-
-
-
-\---
-
-
-
-\## Responsible Security Testing
-
-
-
-All security testing and adversary emulation activities are performed within personally owned or explicitly authorized laboratory environments.
-
-
-
-This repository is intended for cybersecurity education, defensive research, and professional development.
-
-
-
-\---
-
-
-
-<div align="center">
-
-
-
-\*\*Build. Secure. Attack. Detect. Respond. Improve.\*\*
-
-
-
-Enterprise Cyber Range | Continuous Development
-
-
-
-</div>
-
+**Build · Secure · Test · Detect · Respond · Improve**
