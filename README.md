@@ -6,7 +6,7 @@
 
 A hands-on enterprise cybersecurity environment built progressively to practice infrastructure engineering, security operations, identity security, cloud defense, adversary emulation, and automated security validation.
 
-[Architecture](#architecture) · [Roadmap](#development-roadmap) · [Projects](#project-directory) · [Technology](#technology-stack)
+[Architecture](README.md#range-architecture) · [Roadmap](README.md#range-roadmap) · [Projects](README.md#range-projects) · [Technology](README.md#range-technology)
 
 ---
 
@@ -28,6 +28,8 @@ Each project expands the same enterprise environment rather than creating an unr
 > This cyber range is an independent project. Its future identity environment will be built from scratch, separate from Northstar.
 
 ---
+
+<a name="range-architecture"></a>
 
 ## Architecture
 
@@ -91,6 +93,8 @@ flowchart TD
 
 ---
 
+<a name="range-roadmap"></a>
+
 ## Development Roadmap
 
 **Overall progress:** 1 of 100 planned projects complete.
@@ -109,6 +113,8 @@ Difficulty increases from easy to medium, advanced, and hard as the environment 
 
 ---
 
+<a name="range-projects"></a>
+
 ## Project Directory
 
 | ID | Project | Category | Difficulty | Status |
@@ -123,6 +129,8 @@ Deployed three virtual machines, established a static network baseline, configur
 [Read the technical report](01-foundation/README.md) · [Browse supporting evidence](01-foundation/evidence/)
 
 ---
+
+<a name="range-technology"></a>
 
 ## Technology Stack
 
